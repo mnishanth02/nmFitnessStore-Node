@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-const { ObjectId } = mongoose.Schhema;
+const { ObjectId } = mongoose.Schema;
 
 const ProductCartSchema = new mongoose.Schema({
   product: {
@@ -21,6 +21,11 @@ const orderSchema = new mongoose.Schema(
     },
     address: String,
     updated: Date,
+    status: {
+      type: String,
+      default: "",
+      enum: ["Cancelled", "Delivered", "Shipped", "Processing", "Recieved"],
+    },
     user: {
       type: ObjectId,
       ref: "User",

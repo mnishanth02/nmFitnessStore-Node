@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-const { ObjectId } = mongoose.Schhema;
+const { ObjectId } = mongoose.Schema;
 
 const productSchema = new mongoose.Schema(
   {
@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
       trim: true,
       maxlength: 32,
     },
-    descriptio: {
+    description: {
       type: String,
       required: true,
       trim: true,

@@ -40,7 +40,7 @@ var userSchema = new mongoose.Schema(
       default: [],
     },
   },
-  { timeStamp: true }
+  { timestamps: true }
 );
 
 userSchema
@@ -53,6 +53,14 @@ userSchema
   .get(function () {
     return this._password;
   });
+
+  userSchema.methods.toJSON = function () {
+    const user = this;
+    const userObj = user.toObject()
+    delete userObj.encryPassword;
+    delete userObj.salt;
+    return userObj;
+}
 
 userSchema.methods = {
   authenticate: function (planePassword) {
